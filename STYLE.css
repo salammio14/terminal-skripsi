@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  background: black;
+  color: #33ff33;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+}
+
+#terminal {
+  padding: 20px;
+  white-space: pre-wrap;
+  font-size: 1.2rem;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.hide {
+  display: none;
+}
+
+#final-message {
+  text-align: center;
+  color: white;
+  background: linear-gradient(to bottom, #000000, #111111);
+  padding: 50px;
+  animation: fadeIn 2s ease forwards;
+}
+
+#final-message.hidden {
+  display: none;
+}
+
+#final-message img {
+  width: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px white;
+  margin-bottom: 20px;
+}
+
+.glitch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ff0000;
+  mix-blend-mode: normal;
+  opacity: 0;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.1s;
+}
+
+.glitch.active {
+  opacity: 1;
+  animation: none;
+  background: rgba(255, 0, 0, 0.7);
+  animation: glitchFlash 0.2s steps(2, start) infinite;
+  opacity: 0.7;
+}
+
+@keyframes glitchFlash {
+  0% { background: red; }
+  50% { background: black; }
+  100% { background: red; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.virus {
+  color: red;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}

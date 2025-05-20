@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terminal Skripsi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="terminal">
+    <pre id="output"></pre>
+    <div class="glitch" id="glitch"></div>
+  </div>
+
+  <div id="final-message" class="hidden">
+    <img src="ASSETS/IMG-20250224-WA0278.jpg" alt="Teman" />
+    <h1>😱 TERUNGKAP!!! 😱</h1>
+    <p>Selamat! Kamu telah berhasil “dibobol” oleh <span class="virus">virus-virus</span> skripsimu sendiri.</p>
+    <p>💥 Ingat, skripsi itu bukan untuk ditakuti… tapi untuk ditaklukkan!</p>
+    <p>💡 Jangan menyerah, karena setiap error adalah petunjuk menuju solusi.</p>
+    <p>🚀 Kamu tinggal satu langkah lagi menuju kata <strong>“LULUS!”</strong></p>
+  </div>
+
+
+  <!-- Suara -->
+  <audio id="error-sound" src="ASSETS/warning-alarm-loop-1-279206.mp3"></audio>
+  <audio id="final-music" src="ASSETS/vibe-intro-335240.mp3"></audio>
+  <audio id="type-sound" src="ASSETS/mechanical-keyboard-23537.mp3"></audio>
+
+  <script>
+  // Mulai script perbaikan di sini
+  const output = document.getElementById("output");
+  const terminal = document.getElementById("terminal");
+  const typeSound = document.getElementById("type-sound");
+  const errorSound = document.getElementById("error-sound");
+  const finalMusic = document.getElementById("final-music");
+  const finalMessage = document.getElementById("final-message");
+  const glitch = document.getElementById("glitch");
+  const lines = [
+        ">> Menghubungkan ke server akademik. . .",
+        ">> Autentikasi data skripsi. . .",
+        ">> Mem-bypass sistem nilai Dosen Penguji.",
+        ">> Mengekstrak progress target. . .",
+        ">> Deteksi: Muncul rasa malas kronis!",
+        ">> Menyalakan booster semangat otomatis. . .",
+        ">> Hack motivasi aktif. . .",
+        ">> Menyuntikkan keyakinan dan optimisme.",
+        ">> 🚨 ERROR: Terlalu banyak begadang!",
+        ">> Memanggil sistem pemulihan mental...",
+        ">> 🚨 ALERT: Data stres mahasiswa terdeteksi!",
+        ">> Mencari database target yang terpendam...",
+        ">> Mendeteksi keluhan kronis dan kegabutan yang fatal...",
+        ">> Menghentikan semua distraksi...",
+        ">> Menemukan file proposal skripsi.docx",
+        ">> menemukan file proposal magang.docx",
+        ">> menghapus semua data file target..."
+        ">> Merestart sistem akademik...",
+        ">> AKSES PENUH DIBERIKAN",
+        ">> Persiapkan dirimu menerima pesan rahasia.",
+        ">> ERROR: system overload detected!",
+        ">> ERROR: pleasa restart your brain!!",
+        ">> ERROR: system hilang kendali",
+        ">> ERROR: system TEREKSPOS",
+        ">> ERROR: system terkena virus skripsi",
+        ">> ERROR: system tidak bisa di-restart",
+        ">> ERROR: system tidak dikenali",
+        ">> ERROR: system diambil alih",
+        ">> WARNING: system diambil alih",
+        ">> WARNING.... system diambil alih",
+        ">> ERROR",
+        ">> ERROR",
+        ">> ERROR",
+        ">> ERROR"
+      ];
+
+    let lineIndeks = 0;
+    let charIndeks = 0;
+
+
+    function typeLine(){
+      if (lineIndeks < lines.length) {
+        const line = lines[lineIndeks];
+        if (charIndeks < line.length) {
+          output.innerHTML += line[charIndeks];
+          // Sura ketik otomatis untuk semua baris
+        if(
+          !line.toUpperCase().includes("ERROR") &&
+          !line.toUpperCase().includes("WARNING")
+        ) {
+          typeSound.currentTime = 0;
+          typeSound.play();
+        }
+        charIndeks++;
+        terminal.scrollTop = terminal.scrollHeight;
+        setTimeout(typeLine, 30); // kecepatan ketik per karakter
+      } else {
+        output.innerHTML += "\n";
+
+        // Glitch hanya jika ada ERROR DAN WARNING
+        if (line.toUpperCase().includes("ERROR") || line.toUpperCase().includes("WARNING")) {
+          glitch.classList.add("active");
+          errorSound.currentTime = 0;
+          errorSound.play();
+          setTimeout(() => glitch.classList.remove("active"), 300);
+        }
+        lineIndeks++;
+        charIndeks = 0;
+        setTimeout(typeLine, 200); // jeda antar baris
+      }
+    } else {
+      setTimeout(showFinalMessage, 5000);
+    }
+  }
+
+    function showFinalMessage() {
+      typeSound.pause();
+      typeSound.currentTime = 0;
+      terminal.classList.add("hide");
+      finalMessage.classList.remove("hidden");
+      errorSound.pause();
+      glitch.classList.remove("active");
+      finalMusic.currentTime = 0;
+      finalMusic.play();
+    }
+
+    // Jalankan otomatis saat halaman dibuka
+  window.onload = typeLine;
+  </script>
+</body>
+</html>
